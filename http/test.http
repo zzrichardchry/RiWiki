@@ -1,0 +1,25 @@
+GET http://localhost:8880/hello
+#Accept: application/json
+
+# 单元测试
+> {%
+client.test("test-hello", function() {
+  client.log("Test/hello interface");
+  client.log(response.body);
+  client.log(JSON.stringify(response.body)); // 虽然idea没有提示JSON，但是可以用
+  client.log("------Test------");
+  // 验证返回码是否为200，不是就执行后面那句话
+  client.assert(response.status === 200, "Return Value isn't 200");
+  // 验证返回值是否为 Hello World，不是就执行后面那句话
+  client.assert(response.body === "Hello World", "Not equal to Hello World");
+});
+%}
+
+###
+
+POST http://localhost:8880/hello/post
+Content-Type: application/x-www-form-urlencoded
+
+name=TEST
+
+###

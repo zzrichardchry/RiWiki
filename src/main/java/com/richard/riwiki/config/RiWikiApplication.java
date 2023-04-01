@@ -1,11 +1,14 @@
-package com.richard.riwiki;
+package com.richard.riwiki.config;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.env.Environment;
 
+// @ComponentScan({"com.richard", "com.test"})  -- 多个扫描包
+@ComponentScan("com.richard")
 @SpringBootApplication
 public class RiWikiApplication {
 
